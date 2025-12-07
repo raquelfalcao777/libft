@@ -12,87 +12,100 @@
 
 #include "libft.h"
 
-static void free_all(char **strings, int count)
+int	safe_malloc(char **word_v, int position, size_t buffer)
 {
-	while (count --)
-		free(strings[count]);
-	free(strings);
+	int	i;
+
+	i = 0;
+	word_v[position] = malloc(buffer);
+	if (!word_v[position])
+	{
+		while (i < position)
+		{
+			free(word_v[i]);
+			i++;
+		}
+		free(word_v);
+		return (1);
+	}
+	return (0);
 }
 
-static int	count_strings(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
-	int	len;
-	int	i;
-	int	old_i;
+	bool	inside_word;
 	int		count_str;
 
 	count_str = 0;
-	i = 0;
-	old_i = 0;
-	len = ft_strlen(s);
-	while (i < len)
+	while (*s)
 	{
-		while (i < len)
+		inside_word = 0;
+		while ((*s == c) && *s)
+			s++;
+		while (!(*s == c) && *s)
 		{
-			if (!(s[i] == c))
-				break;
-			i++;
+			if(!inside_word)
+			{
+				count_str++;
+				inside_word = 1;
+			}
+			s++;
 		}
-		old_i = i;
-		while (i < len)
-		{
-			if (s[i] == c)
-				break;
-			i++;
-		}
-		if (i > old_i)
-			count_str++;
 	}
 	return(count_str);
+}
+
+int	fill(char **words_v, char const *s, char c)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		len = 0;
+		while (*s == c && *s)
+			s++;
+		while (*s != c && *s)
+		{
+			len++;
+			s++;
+		}
+		if (len)
+		{
+			if (safe_malloc(words_v, i, len + 1))
+				return 1;
+			ft_strlcpy(words_v[i], s - len, len + 1);
+			i++;
+		}
+	}
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	int	count_str;
-	int		len;
-	int		i;
-	int	str_index;
-	int j;
-	int	to_allocate;
+	char	**words_v;
 
-	i = 0;
-	len = 0;
-	count_str = count_strings(s, c);
-	char **strings = malloc(sizeof(char *) * count_str);
-	char buffer[16384];
-	str_index = 0;
-	while (i < len)
-	{
-		while (i < len)
-		{
-			if (!(s[i] == c))
-				break;
-			i++;
-		}
-		j = 0;
-		while (i < len)
-		{
-			if (s[i] == c)
-				break;
-			buffer[i] = s[i];
-			i++;
-			j++;
-		}
-		if (j > 0)
-		{
-			buffer[j] = '\0';
-			to_allocate = sizeof(char) * (ft_strlen(buffer) + 1);
-			strings[str_index] = malloc(to_allocate);
-			if (!strings)
-				free_all(strings, count_str);
-			ft_strlcpy(strings[str_index], buffer, ft_strlen(buffer));
-			str_index++;		
-		}
-	}
-	return (strings);
+	if(!s)
+		return (0);
+	count_str = count_words(s, c);
+	words_v = malloc(sizeof(char *) * (count_str + 1));
+	if (!words_v)
+		return (0);
+	words_v[count_str] = NULL;
+
+	if (fill(words_v, s, c))
+		return (0);
+	return (words_v);
 }
+
+// int	main()
+// {
+// 	char *s = "    Hello there, dude!!";
+// 	char **v = ft_split(s, ' ');
+// 	while (*v)
+// 	{
+// 		printf("%s\n", *v++);
+// 	}
+// }

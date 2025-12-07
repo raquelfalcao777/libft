@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdint.h>
+# include <stdbool.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
