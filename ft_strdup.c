@@ -14,7 +14,7 @@
 
 char	*ft_strdup(const char *s)
 {
-	void		*d;
+	char		*d;
 	size_t		size;
 
 	size = ft_strlen((char *)s);
@@ -23,6 +23,7 @@ char	*ft_strdup(const char *s)
 		return (0);
 	else
 		ft_memcpy(d, s, size);
+	d[size] = '\0';
 	return (d);
 }
 

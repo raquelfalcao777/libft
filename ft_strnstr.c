@@ -20,10 +20,10 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	i = 0;
 	if (s2[0] == '\0')
 		return ((char *)s1);
-	while (s1[i] != '\0' )
+	while (s1[i] != '\0')
 	{
 		j = 0;
-		while (s1[i + j] == s2[j] && i < n)
+		while (s1[i + j] == s2[j] && i + j < n)
 		{
 			if (s2[j + 1] == '\0')
 				return ((char *)s1 + i);
@@ -36,12 +36,12 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 // int main()
 // {
-// 	char	s1[] = "-62,47 +62,47";
-// 	char 	s2[] = "+62";
+// 	char	s1[] = "aaabcabcd";
+// 	char 	s2[] = "cd";
 
 // 	printf("Lookfor needle %s in haystack %s\n", s2, s1);
 
-// 	printf("ft_strnstr return: %s\n", ft_strnstr(s1, s2, 10));
+// 	printf("ft_strnstr return: %s\n", ft_strnstr(s1, s2, 8));
 
 // 	return (0);
 // }

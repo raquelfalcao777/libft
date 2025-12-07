@@ -12,64 +12,43 @@
 
 #include "libft.h"
 
-static int	count_digits(int n)
+static int		get_nb_size(unsigned int nb)
 {
-	int	len;
+	unsigned int	size;
 
-	if (n == 0)
-		return (1);
-	len = 0;
-	while (n > 0)
+	size = 0;
+	while (nb >= 10)
 	{
-		n /= 10;
-		len++;
+		nb /= 10;
+		++size;
 	}
-	return (len);
+	return (size + 1);
 }
 
-static char	*itoa_zero_min(int n)
+char			*ft_itoa(int nbr)
 {
-	char	*str;
+	char			*str;
+	unsigned int	nb;
+	unsigned int	index;
+	unsigned int	size;
 
-	str = NULL;
-	if (n == 0)
+	if (nbr < 0)
+		nb = (unsigned int)(nbr * -1);
+	else
+		nb = (unsigned int)nbr;
+	size = (unsigned int)get_nb_size(nb);
+	index = 0;
+	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
+		return (0);
+	if (nbr < 0 && (str[index] = '-'))
+		size++;
+	index = size - 1;
+	while (nb >= 10)
 	{
-		str = malloc(2);
-		if (!str)
-			return (NULL);
-		str[0] = '0';
-		str[1] = '\0';
+		str[index--] = (char)(nb % 10 + 48);
+		nb /= 10;
 	}
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
+	str[index] = (char)(nb % 10 + 48);
+	str[size] = '\0';
 	return (str);
-}
-
-char	*ft_itoa(int n)
-{
-	int		is_negative;
-	char	*string;
-	long	nb;
-	int		len;
-
-	string = NULL;
-	if (n == -2147483648 || n == 0)
-		return (itoa_zero_min(n));
-	nb = n;
-	is_negative = nb < 0;
-	if (is_negative)
-		nb = -nb;
-	len = count_digits(nb);
-	string = malloc((len + is_negative + 1) * sizeof(char));
-	if (!string)
-		return (NULL);
-	string[len + is_negative] = '\0';
-	while (len-- > 0)
-	{
-		string[len + is_negative] = (n % 10) + '0';
-		n /= 10;
-	}
-	if (is_negative)
-		string[0] = '-';
-	return (string);
 }

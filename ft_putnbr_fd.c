@@ -32,7 +32,7 @@ void	ft_putnbr_fd(int n, int fd)
 	long	nl;
 
 	nl = (long)n;
-	put_long_fd(n, fd);
+	put_long_fd(nl, fd);
 }
 
 // int main()

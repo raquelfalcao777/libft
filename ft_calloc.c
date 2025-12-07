@@ -12,19 +12,21 @@
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nelem, size_t elsize)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*d;
 
-	d = malloc(nelem * elsize);
+	if (nmemb && size && (SIZE_MAX / nmemb) < size)
+		return (0);
+	if (nmemb == 0 || size == 0)
+	{
+		nmemb = 1;
+		size = 1;
+	}
+	d = malloc(nmemb * size);
 	if (d == NULL)
 		return (0);
-	if (nelem == 0 || elsize == 0)
-	{
-		nelem = 1;
-		elsize = 1;
-	}
-	ft_bzero(d, nelem * elsize);
+	ft_bzero(d, nmemb * size);
 	return (d);
 }
 
