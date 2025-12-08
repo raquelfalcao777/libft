@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 14:51:21 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/11/17 17:23:49 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:33:58 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
-// int main()
-// {
-// 	char	s1[] = "abc";
-// 	char 	s2[] = "ab";
-// 	int n = 10;
-//     printf("strncmp returns: %d\n", strncmp(s1, s2,n));
-// 	printf("ft_strcmp return: %d\n", ft_strncmp(s1, s2, n));
-//     return (0);
-// }

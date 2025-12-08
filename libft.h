@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:53:00 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/12/06 19:07:05 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 19:03:44 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+typedef const char* aaa
 #endif

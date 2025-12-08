@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 15:02:07 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/11/16 16:11:23 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:34:01 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,3 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-// int main()
-// {
-// 	char	s1[] = "aaabcabcd";
-// 	char 	s2[] = "cd";
-
-// 	printf("Lookfor needle %s in haystack %s\n", s2, s1);
-
-// 	printf("ft_strnstr return: %s\n", ft_strnstr(s1, s2, 8));
-
-// 	return (0);
-// }

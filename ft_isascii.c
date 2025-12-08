@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 13:57:20 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/11/17 17:57:11 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:32:27 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,3 @@ int	ft_isascii(int c)
 		return (1);
 	return (0);
 }
-// int main(void)
-// {
-// 	printf("!: %d\n",ft_isascii('!'));
-// 	printf("2: %d\n",ft_isascii('2'));
-// 	printf("a: %d\n",ft_isascii('a'));
-// 	printf("empty " ": %d\n",ft_isascii('\n'));
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 15:19:06 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/12/06 19:06:26 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:36:20 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	count_words(char const *s, char c)
 			s++;
 		while (!(*s == c) && *s)
 		{
-			if(!inside_word)
+			if (!inside_word)
 			{
 				count_str++;
 				inside_word = 1;
@@ -52,7 +52,7 @@ static int	count_words(char const *s, char c)
 			s++;
 		}
 	}
-	return(count_str);
+	return (count_str);
 }
 
 int	fill(char **words_v, char const *s, char c)
@@ -74,7 +74,7 @@ int	fill(char **words_v, char const *s, char c)
 		if (len)
 		{
 			if (safe_malloc(words_v, i, len + 1))
-				return 1;
+				return (1);
 			ft_strlcpy(words_v[i], s - len, len + 1);
 			i++;
 		}
@@ -84,28 +84,17 @@ int	fill(char **words_v, char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int	count_str;
+	int		count_str;
 	char	**words_v;
 
-	if(!s)
+	if (!s)
 		return (0);
 	count_str = count_words(s, c);
 	words_v = malloc(sizeof(char *) * (count_str + 1));
 	if (!words_v)
 		return (0);
 	words_v[count_str] = NULL;
-
 	if (fill(words_v, s, c))
 		return (0);
 	return (words_v);
 }
-
-// int	main()
-// {
-// 	char *s = "    Hello there, dude!!";
-// 	char **v = ft_split(s, ' ');
-// 	while (*v)
-// 	{
-// 		printf("%s\n", *v++);
-// 	}
-// }

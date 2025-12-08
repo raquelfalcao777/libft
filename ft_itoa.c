@@ -6,13 +6,13 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 16:30:34 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/12/06 18:57:32 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:39:12 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		get_nb_size(unsigned int nb)
+static int	get_nb_size(unsigned int nb)
 {
 	unsigned int	size;
 
@@ -25,7 +25,7 @@ static int		get_nb_size(unsigned int nb)
 	return (size + 1);
 }
 
-char			*ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
 	char			*str;
 	unsigned int	nb;
@@ -38,7 +38,8 @@ char			*ft_itoa(int nbr)
 		nb = (unsigned int)nbr;
 	size = (unsigned int)get_nb_size(nb);
 	index = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)))))
+	str = (char*)malloc(sizeof(char) * (size + 1 + (nbr < 0 ? 1 : 0)));
+	if (!(str))
 		return (0);
 	if (nbr < 0 && (str[index] = '-'))
 		size++;

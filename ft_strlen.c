@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:28:58 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/11/17 18:09:26 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:33:48 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
-// int	main(void)
-// {
-// 	char	str[] = "Ahoj!!";
-// 	size_t len = ft_strlen(str);
-
-// 	printf("Length of string is %zu\n", len);
-// 	return (0);
-// }

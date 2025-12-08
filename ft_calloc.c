@@ -6,7 +6,7 @@
 /*   By: rfalcao <rfalcao@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:00:55 by rfalcao           #+#    #+#             */
-/*   Updated: 2025/11/17 18:10:28 by rfalcao          ###   ########.fr       */
+/*   Updated: 2025/12/08 17:32:15 by rfalcao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(d, nmemb * size);
 	return (d);
 }
-
-// int main(void)
-// {
-//     char *p;
-
-//     p = ft_calloc(0, 10);
-//     printf("pointer: %p\n", p);
-//     free(p);
-
-//     p = ft_calloc(5, 0);
-//     printf("pointer: %p\n", p);
-//     free(p);
-
-//     int *a = ft_calloc(3, sizeof(int));
-//     for (int i = 0; i < 3; i++)
-//         printf("%d ", a[i]);  // should print: 0 0 0
-//     free(a);
-
-//     return 0;
-// }
